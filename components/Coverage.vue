@@ -14,7 +14,7 @@
       </div>
   
       <!-- Full-width Map Background -->
-      <div class="w-full h-[500px] md:h-[700px] lg:h-[800px] relative">
+      <div class="w-full h-[500px] md:h-[600px] lg:h-[700px] relative">
         <!-- Map Container -->
         <div id="map" class="absolute inset-0 w-full h-full"></div>
         
@@ -133,7 +133,7 @@
   // Map configuration
   const mapConfig = {
     style: "mapbox://styles/mapbox/streets-v12",
-    zoom: 3,
+    zoom: 2,
     pitch: 0,
     bearing: 0,
     center: [-100.486052, 37.830348],
@@ -163,7 +163,7 @@
     
     // Mobile-specific adjustments for better viewing
     if (isMobileView) {
-      mapConfig.zoom = 2.8
+      mapConfig.zoom = 2.3
       mapConfig.pitch = 0
       mapConfig.center = [-100.486052, 35.830348] // Slight adjustment to center
     } else {
