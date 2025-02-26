@@ -1,5 +1,5 @@
 <template>
-  <div id="medical-transportation-inquiry" class="bg-white">
+  <div id="request-transport" class="bg-white">
     <div class="mx-auto max-w-7xl py-12 sm:px-6 sm:py-24 lg:px-8">
       <div
         class="relative isolate overflow-hidden bg-indigo-950 px-6 pb-6 shadow-2xl sm:rounded-3xl sm:px-16"

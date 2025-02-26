@@ -1,30 +1,16 @@
 <template>
   <section class="relative min-h-screen overflow-hidden">
-    <!-- Dynamic background animation -->
-    <div class="absolute inset-0">
-      <div class="absolute inset-0 bg-gradient-to-br from-blue-900/90 to-blue-800"></div>
-      <div class="absolute inset-0 mix-blend-overlay opacity-40">
-        <div
-          v-for="i in 3"
-          :key="i"
-          class="absolute inset-0 blur-3xl"
-          :class="`animate-pulse-slow-${i}`"
-        >
-          <div
-            class="w-full h-full bg-white/10 rounded-full transform rotate-12 scale-150"
-          ></div>
-        </div>
-      </div>
-    </div>
+    <!-- Simple blue gradient background -->
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-900/90 to-blue-800"></div>
 
     <!-- Main content -->
     <div class="relative h-screen flex flex-col justify-between">
       <!-- Hero Content -->
-      <div class="flex-1 flex items-center pt-20 pb-10 px-4">
+      <div class="flex-1 flex items-center pt-16 md:pt-20 pb-8 md:pb-10 px-4">
         <div class="container mx-auto">
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            <!-- Text Content -->
-            <div class="space-y-6 text-center lg:text-left order-2 lg:order-1">
+            <!-- Text Content - Full width on mobile -->
+            <div class="space-y-5 md:space-y-6 text-center lg:text-left col-span-1 lg:col-span-1 order-1">
               <!-- Badge -->
               <div class="inline-flex items-center px-4 py-2 bg-red-500/20 backdrop-blur-sm rounded-full">
                 <div class="h-2 w-2 rounded-full bg-red-500 animate-pulse"></div>
@@ -44,16 +30,16 @@
                 </span>
               </h1>
 
-              <!-- Description -->
-              <p class="text-xl text-gray-200 max-w-2xl mx-auto lg:mx-0 fade-in-up delay-1000">
+              <!-- Description - Shorter on mobile -->
+              <p class="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto lg:mx-0 fade-in-up delay-1000">
                 Reliable, compassionate, and safe medical transport services delivered by highly trained professionals.
               </p>
 
-              <!-- CTA Buttons -->
-              <div class="flex flex-col sm:flex-row gap-4 pt-4 justify-center lg:justify-start fade-in-up delay-1200">
+              <!-- CTA Buttons - Larger on mobile, row layout for better prominence -->
+              <div class="flex flex-col sm:flex-row gap-4 pt-6 justify-center lg:justify-start fade-in-up delay-1200">
                 <a
                   href="#request-transport"
-                  class="inline-flex items-center justify-center px-8 py-4 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-red-500/50"
+                  class="inline-flex items-center justify-center px-6 py-4 md:px-8 md:py-4 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-red-500/50 text-lg"
                 >
                   Request Transport
                   <svg 
@@ -71,9 +57,8 @@
                   </svg>
                 </a>
                 <a
-                
                   href="tel:+1(956)382-4168"
-                  class="inline-flex items-center justify-center px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-lg backdrop-blur-sm transition-all duration-300"
+                  class="inline-flex items-center justify-center px-6 py-4 md:px-8 md:py-4 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-lg backdrop-blur-sm transition-all duration-300 text-lg"
                 >
                   <svg 
                     class="mr-2 w-5 h-5" 
@@ -92,8 +77,8 @@
                 </a>
               </div>
 
-              <!-- Trust Indicators -->
-              <div class="hidden md:flex flex-wrap items-center gap-6 pt-8 justify-center lg:justify-start fade-in-up delay-1400">
+              <!-- Trust Indicators - Show on all devices, but simplified -->
+              <div class="flex flex-wrap items-center gap-6 pt-6 justify-center lg:justify-start fade-in-up delay-1400">
                 <div class="flex items-center text-white/90">
                   <svg 
                     class="w-5 h-5 mr-2 text-red-500" 
@@ -117,11 +102,18 @@
               </div>
             </div>
 
-            <!-- 3D Ambulance Animation -->
-            <div class="relative order-1 lg:order-2">
-              <div class="w-full h-[300px] md:h-[400px] lg:h-[500px] relative mx-auto">
-                <div ref="container" class="w-full h-full"></div>
-              </div>
+            <!-- 3D Ambulance Animation - HIDDEN ON MOBILE (Only visible on lg screens and up) -->
+            <div class="hidden lg:block relative order-2">
+              <AmbulanceModel />
+            </div>
+
+            <!-- Static Ambulance Image - ONLY SHOWN ON MOBILE (Hidden on lg screens and up) -->
+            <div class="relative order-2 lg:hidden mt-4">
+              <img 
+                src="/ambulance3.jpg" 
+                alt="Medical Transport Ambulance" 
+                class="w-full max-w-sm mx-auto"
+              />
             </div>
           </div>
         </div>
@@ -139,165 +131,8 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue';
-import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-
-const container = ref(null);
-let cleanup = null;
-
-onMounted(() => {
-  if (container.value) {
-    cleanup = initThree(container.value);
-  }
-});
-
-onBeforeUnmount(() => {
-  if (cleanup) {
-    cleanup();
-  }
-});
-
-const initThree = (container) => {
-  let camera, scene, renderer, model, mixer;
-  
-  function init() {
-    try {
-      // Scene setup
-      scene = new THREE.Scene();
-      
-      // Use transparent background to blend with the gradient
-      scene.background = null;
-
-      // Camera setup - use wider FOV for mobile
-      const isMobile = window.innerWidth < 768;
-      camera = new THREE.PerspectiveCamera(
-        isMobile ? 60 : 45,
-        container.clientWidth / container.clientHeight,
-        0.1,
-        1000
-      );
-      
-      // Adjust camera position based on screen size
-      camera.position.set(0, 1, isMobile ? 7 : 5);
-      camera.lookAt(0, 0, 0);
-      
-      // Lighting setup - enhanced for better visibility
-      const ambientLight = new THREE.AmbientLight(0xffffff, 2.5);
-      scene.add(ambientLight);
-
-      const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
-      directionalLight.position.set(5, 5, 5);
-      scene.add(directionalLight);
-      
-      const secondaryLight = new THREE.DirectionalLight(0xffffff, 1.5);
-      secondaryLight.position.set(-5, 3, -5);
-      scene.add(secondaryLight);
-      
-      // Add a top light to highlight the ambulance roof
-      const topLight = new THREE.DirectionalLight(0xffffff, 1);
-      topLight.position.set(0, 8, 0);
-      scene.add(topLight);
-      
-      // Add a bottom light for better underside visibility
-      const bottomLight = new THREE.DirectionalLight(0xffffff, 0.7);
-      bottomLight.position.set(0, -3, 0);
-      scene.add(bottomLight);
-
-      // Model loading
-      const loader = new GLTFLoader();
-      loader.load(
-        '/scene.gltf',
-        (gltf) => {
-          model = gltf.scene;
-          
-          const box = new THREE.Box3().setFromObject(model);
-          const center = box.getCenter(new THREE.Vector3());
-          const size = box.getSize(new THREE.Vector3());
-          
-          // Center the model
-          model.position.set(-center.x, -center.y, -center.z);
-          
-          // Make it bigger - scale up more on mobile
-          const scale = isMobile ? 
-            7 / Math.max(size.x, size.y, size.z) : 
-            6 / Math.max(size.x, size.y, size.z);
-          model.scale.setScalar(scale);
-          
-          scene.add(model);
-          
-          // Adjust initial rotation to show the side of the ambulance
-          model.rotation.y = Math.PI / 4;
-        },
-        (progress) => {
-          // Add loading indicator here if needed
-        },
-        (error) => {
-          console.error('Error loading model:', error);
-        }
-      );
-
-      // Renderer setup
-      renderer = new THREE.WebGLRenderer({ 
-        antialias: true,
-        alpha: true // Important for transparent background
-      });
-      renderer.setPixelRatio(window.devicePixelRatio);
-      renderer.setSize(container.clientWidth, container.clientHeight);
-      container.appendChild(renderer.domElement);
-
-      // OrbitControls setup - with auto-rotation
-      const controls = new OrbitControls(camera, renderer.domElement);
-      controls.enableZoom = false;
-      controls.enablePan = false;
-      controls.enableRotate = false;
-      controls.enableDamping = true;
-      controls.autoRotate = true;
-      controls.autoRotateSpeed = 0.8; // Slower rotation
-      controls.target.set(0, 0, 0);
-      controls.update();
-
-      // Make the renderer canvas non-interactive
-      renderer.domElement.style.pointerEvents = 'none';
-
-      animate();
-    } catch (error) {
-      console.error('Three.js initialization error:', error);
-    }
-  }
-
-  function onWindowResize() {
-    if (!container) return;
-    camera.aspect = container.clientWidth / container.clientHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(container.clientWidth, container.clientHeight);
-  }
-
-  function animate() {
-    requestAnimationFrame(animate);
-    
-    if (model) {
-      // Very slow rotation for a more elegant look
-      model.rotation.y += 0.002;
-    }
-    
-    renderer.render(scene, camera);
-  }
-
-  init();
-
-  const resizeObserver = new ResizeObserver(() => {
-    onWindowResize();
-  });
-  resizeObserver.observe(container);
-
-  return () => {
-    resizeObserver.disconnect();
-    if (renderer) renderer.dispose();
-    if (scene) scene.clear();
-  };
-};
+import { ref, onMounted } from 'vue';
+import AmbulanceModel from './AmbulanceModel.vue';
 </script>
 
 <style scoped>
@@ -366,29 +201,5 @@ const initThree = (container) => {
 }
 .delay-1400 {
   animation-delay: 1400ms;
-}
-
-/* Background animation utilities */
-.animate-pulse-slow-1 {
-  animation: pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-.animate-pulse-slow-2 {
-  animation: pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  animation-delay: -2s;
-}
-.animate-pulse-slow-3 {
-  animation: pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  animation-delay: -4s;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    opacity: 0.3;
-    transform: scale(1) translate(0%, 0%);
-  }
-  50% {
-    opacity: 0.5;
-    transform: scale(1.2) translate(5%, -5%);
-  }
 }
 </style>
