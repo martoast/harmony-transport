@@ -11,7 +11,7 @@
         <div class="mt-3 text-left">
           <form @submit.prevent="submitForm">
             <div class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-9">
-              <div class="sm:col-span-3">
+              <div class="sm:col-span-2">
                 <label
                   for="firstName"
                   class="block text-sm font-medium text-gray-300"
@@ -28,7 +28,7 @@
                 />
               </div>
 
-              <div class="sm:col-span-3">
+              <div class="sm:col-span-2">
                 <label
                   for="lastName"
                   class="block text-sm font-medium text-gray-300"
@@ -45,7 +45,7 @@
                 />
               </div>
 
-              <div class="sm:col-span-3">
+              <div class="sm:col-span-2">
                 <label
                   for="email"
                   class="block text-sm font-medium text-gray-300"
@@ -62,7 +62,7 @@
                 />
               </div>
 
-              <div class="sm:col-span-3">
+              <div class="sm:col-span-2">
                 <label
                   for="phone"
                   class="block text-sm font-medium text-gray-300"

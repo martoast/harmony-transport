@@ -1,8 +1,11 @@
 <template>
   <div>
-    <Hero/>
-    <Services/>
+    <!-- <Hero/> -->
+     <MedicalHero/>
+    <Services id="services"/>
     <MedicalTrasportationForm/>
+    <Coverage id="coverage"/>
     <FAQ/>
+    <Footer/>
   </div>
 </template>
