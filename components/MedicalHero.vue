@@ -11,106 +11,6 @@
       <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50"></div>
     </div>
 
-    <!-- Navbar -->
-    <header class="absolute inset-x-0 top-0 z-50">
-      <nav class="flex items-center justify-between p-4 lg:px-8" aria-label="Global">
-        <!-- Logo -->
-        <div class="flex lg:flex-1">
-          <a href="/" class="-m-1.5 p-1.5">
-            <span class="sr-only">Apollo</span>
-            <img src="/logo.jpg" class="h-12 w-auto" alt="Apollo" />
-          </a>
-        </div>
-        
-        <!-- Mobile menu button -->
-        <div class="flex lg:hidden">
-          <button @click="mobileMenuOpen = true" type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-white">
-            <span class="sr-only">Open main menu</span>
-            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-            </svg>
-          </button>
-        </div>
-        
-        <!-- Desktop nav links -->
-        <div class="hidden lg:flex lg:gap-x-12">
-          <a v-for="item in navigation" :key="item.name" :href="item.href" class="text-sm font-semibold text-white hover:text-red-400 transition-colors">
-            {{ item.name }}
-          </a>
-        </div>
-        
-        <!-- Desktop quick action buttons -->
-        <div class="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-4">
-          <a href="tel:+1(956)382-4168" class="flex items-center text-white hover:text-red-400 transition-colors">
-            <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-            </svg>
-            <span class="text-sm">(956) 382-4168</span>
-          </a>
-          <a href="sms:+1(956)382-4168" class="flex items-center text-white hover:text-red-400 transition-colors">
-            <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-            </svg>
-            <span class="text-sm">Text Us</span>
-          </a>
-        </div>
-      </nav>
-      
-      <!-- Mobile menu -->
-      <div v-if="mobileMenuOpen" class="lg:hidden">
-        <div class="fixed inset-0 z-50"></div>
-        <div class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-black/90 backdrop-blur-sm px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10">
-          <div class="flex items-center justify-between">
-            <a href="/" class="-m-1.5 p-1.5">
-              <span class="sr-only">Apollo</span>
-              <img class="h-8 w-auto" src="/logo.png" alt="Apollo" />
-            </a>
-            <button @click="mobileMenuOpen = false" type="button" class="-m-2.5 rounded-md p-2.5 text-white">
-              <span class="sr-only">Close menu</span>
-              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
-          
-          <!-- Mobile menu links -->
-          <div class="mt-6 flow-root">
-            <div class="-my-6 divide-y divide-gray-500/10">
-              <!-- Navigation items -->
-              <div class="space-y-2 py-6">
-                <a v-for="item in navigation" :key="item.name" :href="item.href" 
-                   class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold text-white hover:bg-white/10">
-                  {{ item.name }}
-                </a>
-              </div>
-              
-              <!-- Quick action items -->
-              <div class="py-6 space-y-2">
-                <a href="tel:+1(956)382-4168" class="-mx-3 flex items-center rounded-lg px-3 py-2 text-base font-semibold text-white hover:bg-white/10">
-                  <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
-                  Call Us: (956) 382-4168
-                </a>
-                <a href="sms:+1(956)382-4168" class="-mx-3 flex items-center rounded-lg px-3 py-2 text-base font-semibold text-white hover:bg-white/10">
-                  <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-                  </svg>
-                  Text Us
-                </a>
-                <a href="#request-transport" @click="mobileMenuOpen = false" class="-mx-3 flex items-center rounded-lg px-3 py-2 text-base font-semibold text-white bg-red-500 hover:bg-red-600">
-                  <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                  Request Transport
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-
     <!-- Hero Content -->
     <div class="relative h-screen flex items-center">
       <div class="container mx-auto px-4">
@@ -173,7 +73,7 @@
                     d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                   />
                 </svg>
-                Emergency Call
+                Call Now
               </a>
             </div>
 

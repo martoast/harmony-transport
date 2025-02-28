@@ -9,4 +9,3 @@
       <Footer/>
     </div>
   </template>
-  
