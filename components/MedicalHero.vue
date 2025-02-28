@@ -18,7 +18,7 @@
         <div class="flex lg:flex-1">
           <a href="/" class="-m-1.5 p-1.5">
             <span class="sr-only">Apollo</span>
-            <img class="h-12 w-auto" src="" alt="Apollo" />
+            <img src="/logo.jpg" class="h-12 w-auto" alt="Apollo" />
           </a>
         </div>
         
@@ -63,7 +63,7 @@
           <div class="flex items-center justify-between">
             <a href="/" class="-m-1.5 p-1.5">
               <span class="sr-only">Apollo</span>
-              <img class="h-8 w-auto" src="" alt="Apollo" />
+              <img class="h-8 w-auto" src="/logo.png" alt="Apollo" />
             </a>
             <button @click="mobileMenuOpen = false" type="button" class="-m-2.5 rounded-md p-2.5 text-white">
               <span class="sr-only">Close menu</span>
@@ -222,8 +222,8 @@ import { ref } from 'vue'
 const navigation = [
   { name: 'Home', href: '/' },
   { name: 'Services', href: '#services' },
-  { name: 'About Us', href: '#about' },
   { name: 'Coverage Areas', href: '#coverage' },
+  { name: 'FAQ', href: '#faq' },
   { name: 'Contact', href: '#contact' },
 ]
 
