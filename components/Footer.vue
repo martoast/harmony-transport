@@ -72,7 +72,7 @@
               <component :is="item.icon" class="size-6" aria-hidden="true" />
             </a>
           </div>
-          <p class="mt-8 text-sm/6 text-gray-600 md:order-1 md:mt-0">&copy; {{ new Date().getFullYear() }} Apollo. All rights reserved.</p>
+          <p class="mt-8 text-sm/6 text-gray-600 md:order-1 md:mt-0">&copy; {{ new Date().getFullYear() }} Apollo Ambulance Service Inc. All rights reserved.</p>
         </div>
       </div>
     </footer>
