@@ -1,8 +1,8 @@
 <template>
     <header class="absolute inset-x-0 top-0 z-50" :class="isHomePage ? '' : 'bg-white shadow-sm'">
-      <nav class="flex items-center justify-between p-4 lg:px-8" aria-label="Global">
+      <nav class="flex items-center justify-between p-4 xl:px-8" aria-label="Global">
         <!-- Logo -->
-        <div class="flex lg:flex-1">
+        <div class="flex xl:flex-1">
           <NuxtLink to="/" class="-m-1.5 p-1.5">
             <span class="sr-only">Apollo</span>
             <img src="/logo.jpg" class="h-12 w-auto" alt="Apollo" />
@@ -10,7 +10,7 @@
         </div>
         
         <!-- Mobile menu button -->
-        <div class="flex lg:hidden">
+        <div class="flex xl:hidden">
           <button 
             @click="mobileMenuOpen = true" 
             type="button" 
@@ -23,7 +23,7 @@
         </div>
         
         <!-- Desktop nav links -->
-        <div class="hidden lg:flex lg:gap-x-8">
+        <div class="hidden xl:flex xl:gap-x-8">
           <NuxtLink 
             v-for="item in navigation" 
             :key="item.name" 
@@ -53,7 +53,7 @@
         </div>
         
         <!-- Desktop quick action buttons -->
-        <div class="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-4">
+        <div class="hidden xl:flex xl:flex-1 xl:justify-end xl:gap-x-4">
           <NuxtLink 
             to="tel:+1(956)382-4168" 
             class="flex items-center transition-colors"
@@ -89,7 +89,7 @@
         leave-from-class="opacity-100"
         leave-to-class="opacity-0"
       >
-        <div v-if="mobileMenuOpen" class="lg:hidden">
+        <div v-if="mobileMenuOpen" class="xl:hidden">
           <div 
             class="fixed inset-0 z-50 backdrop-blur-sm" 
             :class="isHomePage ? 'bg-black/20' : 'bg-gray-800/10'"

@@ -6,5 +6,6 @@
       <Coverage id="coverage"/>
       <Fleet/>
       <FAQ id="faq"/>
+      <CTA/>
     </div>
   </template>
