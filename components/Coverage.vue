@@ -62,52 +62,9 @@
             </p>
           </div>
         </div>
-      </div>
   
-      <!-- Coverage Benefits Section -->
-      <div class="container mx-auto px-4 sm:px-6 lg:px-8 mt-8 md:mt-0 z-10 relative -mt-20">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-          <div class="bg-white p-6 rounded-xl shadow-lg transform transition duration-300 hover:-translate-y-1 hover:shadow-xl">
-            <div class="w-12 h-12 flex items-center justify-center bg-red-100 text-red-600 rounded-full mb-4">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-            </div>
-            <h3 class="text-lg font-semibold text-gray-900 mb-2">Multi-State Coverage</h3>
-            <p class="text-gray-600">Seamless transportation across state lines with proper licensing and certification in all covered areas.</p>
-          </div>
-          
-          <div class="bg-white p-6 rounded-xl shadow-lg transform transition duration-300 hover:-translate-y-1 hover:shadow-xl">
-            <div class="w-12 h-12 flex items-center justify-center bg-red-100 text-red-600 rounded-full mb-4">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
-            <h3 class="text-lg font-semibold text-gray-900 mb-2">Rapid Response Times</h3>
-            <p class="text-gray-600">Strategic locations throughout our service areas ensure faster response times when medical transport is needed.</p>
-          </div>
-          
-          <div class="bg-white p-6 rounded-xl shadow-lg transform transition duration-300 hover:-translate-y-1 hover:shadow-xl">
-            <div class="w-12 h-12 flex items-center justify-center bg-red-100 text-red-600 rounded-full mb-4">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-              </svg>
-            </div>
-            <h3 class="text-lg font-semibold text-gray-900 mb-2">Local Expertise</h3>
-            <p class="text-gray-600">Our teams include professionals familiar with local medical facilities, routes, and requirements in each service area.</p>
-          </div>
-        </div>
-        
-        <!-- Call to Action -->
-        <div class="mt-16 mb-20 text-center">
-          <a href="#request-transport" class="inline-flex items-center justify-center px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-red-500/30">
-            Request Transportation
-            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </a>
-        </div>
+     
+
       </div>
     </section>
   </template>

@@ -1,11 +1,7 @@
 <template>
-    <jobs/>
+    <div>
+      <h1>
+        careers page
+      </h1>
+    </div>
 </template>
-
-<script setup>
-
-definePageMeta({
-  layout: "careers",
-});
-
-</script>

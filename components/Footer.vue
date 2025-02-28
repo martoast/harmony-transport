@@ -92,7 +92,7 @@
     company: [
       { name: 'Home', href: '/' },
       { name: 'Coverage Areas', href: '#coverage' },
-      { name: 'Careers', href: '/careers' },
+      { name: 'Careers', href: '/careers/' },
       { name: 'Contact', href: '/contact' },
     ],
     resources: [
