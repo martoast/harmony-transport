@@ -7,7 +7,7 @@
             <h2 class="text-base/7 font-semibold text-red-600">Need Medical Transportation?</h2>
             <p class="mt-2 text-4xl font-semibold tracking-tight text-balance text-gray-900 sm:text-5xl">Professional Medical Transport When You Need It Most</p>
           </hgroup>
-          <p class="mx-auto mt-6 max-w-xl text-lg/8 text-pretty text-gray-600">Reliable, compassionate, and safe medical transport services delivered by highly trained professionals across Texas, Florida, Arizona, Alabama, and California.</p>
+          <p class="mx-auto mt-6 max-w-xl text-lg/8 text-pretty text-gray-600">Reliable, compassionate, and safe medical transport services delivered by highly trained professionals across San Antonio, New Braunfels, Schertz, Cibolo, and Boerne.</p>
           
           <!-- CTA buttons -->
           <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
