@@ -1,0 +1,20 @@
+{
+    "id": 1,
+    "slug": "importance-of-medical-transportation",
+    "title": "The Importance of Medical Transportation for Seniors",
+    "description": "Exploring how reliable medical transportation improves healthcare access and quality of life for seniors and those with mobility challenges.",
+    "imageUrl": "/fleet.png",
+    "date": "March 1, 2025",
+    "datetime": "2025-03-01",
+    "category": {
+      "title": "Senior Care",
+      "href": "/blog/category/senior-care"
+    },
+    "author": {
+      "name": "Maria Rodriguez",
+      "role": "Patient Care Coordinator",
+      "imageUrl": "/sideview.png",
+      "href": "/"
+    },
+    "content": "<p>For seniors and individuals with mobility challenges, reliable medical transportation is not just a convenience—it's a necessity that directly impacts their healthcare outcomes and quality of life.</p><p>Regular medical appointments are essential for managing chronic conditions common among older adults. However, transportation barriers can lead to missed appointments, delayed care, and worsening health conditions.</p><p>Professional medical transportation services bridge this gap by providing safe, accessible, and comfortable transportation options tailored to the unique needs of each patient.</p>"
+  }

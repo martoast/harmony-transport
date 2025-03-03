@@ -1,0 +1,20 @@
+{
+    "id": 2,
+    "slug": "wheelchair-transport-tips",
+    "title": "5 Essential Tips for Safe Wheelchair Transportation",
+    "description": "Learn the key safety protocols and best practices for transporting patients who require wheelchair assistance.",
+    "imageUrl": "/sideview.png",
+    "date": "February 15, 2025",
+    "datetime": "2025-02-15",
+    "category": {
+      "title": "Safety",
+      "href": "/blog/category/safety"
+    },
+    "author": {
+      "name": "David Chen",
+      "role": "Safety Training Specialist",
+      "imageUrl": "/sideview.png",
+      "href": "/"
+    },
+    "content": "<p>Wheelchair transportation requires specialized knowledge and techniques to ensure passenger safety and comfort. Here are five essential tips for safe wheelchair transport:</p><ol><li><strong>Proper Securement</strong>: Always use the four-point tie-down system to secure the wheelchair to the vehicle floor.</li><li><strong>Passenger Restraints</strong>: Ensure the passenger is secured with both lap and shoulder belts for maximum protection.</li><li><strong>Equipment Checks</strong>: Regularly inspect wheelchair lifts and ramps for any signs of wear or damage.</li><li><strong>Smooth Operation</strong>: Use gentle acceleration and deceleration to prevent passenger discomfort.</li><li><strong>Clear Communication</strong>: Always explain procedures to passengers before beginning any movement.</li></ol>"
+  }

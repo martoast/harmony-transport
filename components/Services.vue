@@ -85,13 +85,13 @@ const services = [
     id: 1,
     name: 'Ambulatory Transports',
     description: 'Non-emergency transport for patients who are able to walk on their own or with driver\'s assistance. Ideal for medical appointments or transfers between facilities.',
-    icon: UserIcon,
+    icon: TruckIcon,
   },
   {
     id: 2,
     name: 'Wheelchair Transports',
     description: 'Specialized transportation for individuals who require wheelchair assistance. Our vehicles are equipped with secure wheelchair lifts and tie-downs to ensure safe and comfortable travel.',
-    icon: HandRaisedIcon,
+    icon: TruckIcon,
   },
   {
     id: 3,

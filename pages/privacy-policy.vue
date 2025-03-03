@@ -107,7 +107,7 @@
       <p class="mt-6">We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "last updated" date.</p>
 
       <h2 class="mt-16 text-2xl font-bold tracking-tight text-gray-900">8. Contact Us</h2>
-      <p class="mt-6">If you have any questions about this Privacy Policy, please contact us at contact@harmonylivingcare.com</p>
+      <p class="mt-6">If you have any questions about this Privacy Policy, please contact us at contact@apollo-mts.com</p>
 
       <p class="mt-8">Last updated: 10/16/2024</p>
     </div>
