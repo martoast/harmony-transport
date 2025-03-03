@@ -4,9 +4,9 @@
     
     <slot />
     
-    <!-- Chatbot with toggle button -->
-    <div class="chatbot-wrapper">
-      <!-- Chat button -->
+    <!-- Chat Widget Container -->
+    <div class="chat-widget-wrapper">
+      <!-- Chat Button -->
       <button 
         @click="toggleChat" 
         class="chat-toggle-button"
@@ -16,15 +16,21 @@
         <XMarkIcon v-else class="h-6 w-6" />
       </button>
       
-      <!-- Chatbot iframe -->
+      <!-- Chat Widget Container -->
       <div 
         v-show="isChatOpen" 
-        class="chatbot-container"
+        class="chat-container"
       >
+        <div class="chat-instructions">
+          <p>Click on the assistant icon below to start chatting</p>
+          <div class="instructions-arrow">↓</div>
+        </div>
         <iframe 
-          src="https://app.fastbots.ai/embed/cm7th0gwg07ats5k4lvc30l05"
-          class="chatbot-iframe">
-        </iframe>
+          src="https://iframes.ai/o/1741039334750x182653902329741300?color=1610a3&icon="
+          allow="microphone"
+          class="chat-iframe"
+          ref="assistantFrame"
+        ></iframe>
       </div>
     </div>
     
@@ -33,16 +39,46 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { ChatBubbleLeftRightIcon, XMarkIcon } from '@heroicons/vue/24/solid'
 
-// Chatbot toggle state
+// Chat toggle state
 const isChatOpen = ref(false)
+const assistantFrame = ref(null)
 
 // Toggle chat visibility
 const toggleChat = () => {
   isChatOpen.value = !isChatOpen.value
+  
+  // Check microphone permissions when opening
+  if (isChatOpen.value && assistantFrame.value) {
+    checkMicrophonePermissions()
+  }
 }
+
+// Check microphone permissions
+const checkMicrophonePermissions = () => {
+  if (navigator.permissions) {
+    navigator.permissions.query({ name: 'microphone' })
+      .then(result => {
+        if (result.state === 'granted') {
+          console.log('Microphone access already granted')
+        } else if (result.state === 'prompt') {
+          console.log('User will be prompted for microphone access')
+        }
+      })
+      .catch(err => {
+        console.error('Error checking microphone permissions:', err)
+      })
+  }
+}
+
+// Check permissions when frame loads
+onMounted(() => {
+  if (assistantFrame.value) {
+    assistantFrame.value.addEventListener('load', checkMicrophonePermissions)
+  }
+})
 
 useSeoMeta({
   title: 'Apollo Ambulance Service: Professional Medical Transportation',
@@ -63,7 +99,7 @@ useSeoMeta({
 </script>
 
 <style>
-.chatbot-wrapper {
+.chat-widget-wrapper {
   position: fixed;
   bottom: 20px;
   right: 20px;
@@ -71,7 +107,7 @@ useSeoMeta({
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  pointer-events: none; /* This allows clicks to pass through the wrapper itself */
+  pointer-events: none;
 }
 
 .chat-toggle-button {
@@ -88,7 +124,7 @@ useSeoMeta({
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   transition: all 0.2s ease;
   margin-top: 10px;
-  pointer-events: auto; /* Enable clicks on the button */
+  pointer-events: auto;
 }
 
 .chat-toggle-button:hover {
@@ -100,37 +136,74 @@ useSeoMeta({
   background-color: #1e40af;
 }
 
-.chatbot-container {
+.chat-container {
   width: 400px;
-  height: 600px;
+  height: 500px;
   margin-bottom: 10px;
-  pointer-events: auto; /* Enable interaction with the iframe */
-  -webkit-overflow-scrolling: touch; /* Improve scrolling on iOS */
-}
-
-.chatbot-iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
+  pointer-events: auto;
+  -webkit-overflow-scrolling: touch;
+  background-color: white;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  background-color: white;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Make chatbot responsive on mobile */
+.chat-instructions {
+  padding: 12px;
+  text-align: center;
+  background-color: #f3f4f6;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.chat-instructions p {
+  margin: 0;
+  font-size: 14px;
+  color: #4b5563;
+  font-weight: 500;
+}
+
+.instructions-arrow {
+  font-size: 18px;
+  color: #6b7280;
+  margin-top: 2px;
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+}
+
+.chat-iframe {
+  width: 100%;
+  flex: 1;
+  border: none;
+  transform: translateZ(0);
+}
+
+/* Make chat responsive on mobile */
 @media (max-width: 640px) {
-  .chatbot-container {
+  .chat-container {
     width: 320px;
-    height: 500px;
-    bottom: 80px;
+    height: 400px;
     position: fixed;
-    right: 0;
-    left: 0;
-    margin: 0 auto;
+    bottom: 80px;
+    right: 20px;
+    margin: 0;
   }
   
-  .chatbot-iframe {
-    transform: translateZ(0); /* Force hardware acceleration on mobile */
+  .chat-instructions {
+    padding: 8px;
+  }
+  
+  .chat-instructions p {
+    font-size: 12px;
   }
 }
 </style>
