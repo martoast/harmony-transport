@@ -20,8 +20,7 @@
             </div>
             <div class="ml-4">
               <h3 class="text-base font-semibold text-gray-900">Call Us</h3>
-              <p class="mt-1 text-sm text-gray-500">Mon-Fri, 8am-6pm</p>
-              <a href="tel:+19563824168" class="mt-2 block text-base font-medium text-red-500 hover:text-red-600">(956) 382-4168</a>
+              <a href="tel:+1(830)590-1183" class="mt-2 block text-base font-medium text-red-500 hover:text-red-600">(830)590-1183</a>
             </div>
           </div>
         </div>
@@ -93,7 +92,7 @@
                   id="phone-number" 
                   autocomplete="tel" 
                   class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-red-500 sm:text-sm sm:leading-6" 
-                  placeholder="(956) 382-4168" 
+                  placeholder="(830)590-1183"
                 />
               </div>
             </div>

@@ -7,5 +7,6 @@
       <Fleet/>
       <FAQ id="faq"/>
       <CTA/>
+      <EventsCalendar/>
     </div>
   </template>

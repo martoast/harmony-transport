@@ -60,7 +60,7 @@
             :class="isHomePage ? 'text-white hover:text-red-400' : 'text-gray-700 hover:text-red-600'"
           >
             <PhoneIcon class="w-5 h-5 mr-1" aria-hidden="true" />
-            <span class="text-sm">(956) 382-4168</span>
+            <span class="text-sm">(830)590-1183</span>
           </NuxtLink>
           
           <NuxtLink 
@@ -145,10 +145,10 @@
                       : 'text-gray-900 hover:bg-gray-50 active:bg-gray-100'"
                   >
                     <PhoneIcon class="w-5 h-5 mr-3" aria-hidden="true" />
-                    Call Us: (956) 382-4168
+                    Call Us: (830)590-1183
                   </NuxtLink>
                   <NuxtLink 
-                    to="sms:+1(956)382-4168" 
+                    to="sms:+1(830)590-1183" 
                     class="-mx-3 flex items-center rounded-lg px-3 py-3 text-base font-semibold transition-colors"
                     :class="isHomePage 
                       ? 'text-white hover:bg-white/10 active:bg-white/20' 
