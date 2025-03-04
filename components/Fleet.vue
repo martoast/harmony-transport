@@ -123,7 +123,7 @@
         <p class="text-gray-600 mb-6">Need help choosing the right vehicle for your needs?</p>
         <div class="flex flex-col sm:flex-row justify-center gap-4">
           <a 
-            href="tel:+1(956)742-4341" 
+            href="tel:+1(830)590-1183" 
             class="inline-flex items-center justify-center px-6 py-3 bg-white text-red-500 border border-red-500 font-medium rounded-lg hover:bg-red-50 transition-colors"
           >
             <svg 

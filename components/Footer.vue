@@ -14,7 +14,7 @@
           </p>
           <div class="mt-4 space-y-2">
             <a
-              href="tel:+1(956)742-4341"
+              href="tel:+1(830)590-1183"
               class="flex items-center text-sm text-gray-600 hover:text-red-600 transition-colors duration-200"
             >
               <svg

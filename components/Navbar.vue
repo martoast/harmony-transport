@@ -55,7 +55,7 @@
         <!-- Desktop quick action buttons -->
         <div class="hidden xl:flex xl:flex-1 xl:justify-end xl:gap-x-4">
           <NuxtLink 
-            to="tel:+1(956)742-4341" 
+            to="tel:+1(830)590-1183" 
             class="flex items-center transition-colors"
             :class="isHomePage ? 'text-white hover:text-red-400' : 'text-gray-700 hover:text-red-600'"
           >
@@ -138,7 +138,7 @@
                 <!-- Quick action items -->
                 <div class="py-6 space-y-3">
                   <NuxtLink 
-                    to="tel:+1(956)742-4341" 
+                    to="tel:+1(830)590-1183" 
                     class="-mx-3 flex items-center rounded-lg px-3 py-3 text-base font-semibold transition-colors"
                     :class="isHomePage 
                       ? 'text-white hover:bg-white/10 active:bg-white/20' 
