@@ -274,18 +274,39 @@ const submitApplication = async () => {
     
     // Create form data for submission
     const formData = new FormData()
-    formData.append('firstName', form.value.firstName)
-    formData.append('lastName', form.value.lastName)
-    formData.append('email', form.value.email)
-    formData.append('phone', form.value.phone)
-    formData.append('resume', form.value.resume)
-    formData.append('coverLetter', form.value.coverLetter)
-    formData.append('jobId', jobId.value)
-    formData.append('jobTitle', job.value.role)
-
-    // Submit form - replace with your actual API endpoint
-    // For now, we'll simulate a successful submission
-    await new Promise(resolve => setTimeout(resolve, 1500))
+    
+    // Convert resume to base64 for webhook
+    let resumeBase64 = null
+    if (form.value.resume) {
+      const reader = new FileReader()
+      resumeBase64 = await new Promise((resolve) => {
+        reader.onload = (e) => resolve(e.target.result)
+        reader.readAsDataURL(form.value.resume)
+      })
+    }
+    
+    // Prepare payload for webhook
+    const payload = {
+      lead: {
+        firstName: form.value.firstName,
+        lastName: form.value.lastName,
+        email: form.value.email,
+        phone: form.value.phone,
+        coverLetter: form.value.coverLetter,
+        jobId: jobId.value,
+        jobTitle: job.value.role,
+        resumeBase64: resumeBase64 // Send resume as base64
+      }
+    }
+    
+    // Submit to webhook
+    await $fetch('/api/apply-webhook', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: payload
+    })
     
     // Reset form and show success message
     form.value = {
@@ -299,6 +320,10 @@ const submitApplication = async () => {
       jobId: jobId
     }
     
+    // Reset file input
+    const fileInput = document.getElementById('resume')
+    if (fileInput) fileInput.value = ''
+    
     success.value = true
     
     // Scroll to success message
@@ -311,13 +336,9 @@ const submitApplication = async () => {
     
   } catch (err) {
     error.value = err.message || 'An error occurred while submitting your application. Please try again.'
+    console.error('Error submitting application:', err)
   } finally {
     loading.value = false
   }
 }
-
-// Scroll to top when component mounts
-onMounted(() => {
-  window.scrollTo(0, 0)
-})
 </script>
