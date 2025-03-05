@@ -317,6 +317,7 @@ const submitApplication = async () => {
     }
     
     success.value = true
+    alert("Application Submitted Successfully!")
     
     // Scroll to success message
     setTimeout(() => {
