@@ -196,48 +196,30 @@ const selectedDate = ref(null);
 const events = [
   {
     id: 1,
-    title: "Weekly Medical Transport Staff Meeting",
-    date: "2025-03-06",
+    title: "Monthly Food Drive - Downtown Community Center",
+    date: "2025-03-16",
     startTime: "09:00",
-    endTime: "10:00",
-    isAllDay: false,
-  },
-  {
-    id: 2,
-    title: "Equipment Maintenance Day",
-    date: "2025-03-10",
-    isAllDay: true,
-  },
-  {
-    id: 3,
-    title: "CPR Certification Renewal",
-    date: "2025-03-15",
-    startTime: "13:00",
     endTime: "16:00",
     isAllDay: false,
   },
+  
   {
-    id: 4,
-    title: "Safety Training Webinar",
+    id: 2,
+    title: "Mobile Soup Kitchen - Central Park",
     date: "2025-03-22",
-    startTime: "10:00",
-    endTime: "11:30",
+    startTime: "11:00",
+    endTime: "14:00",
     isAllDay: false,
   },
+ 
   {
-    id: 5,
-    title: "Monthly Team Review",
-    date: "2025-03-28",
-    startTime: "14:00",
-    endTime: "15:30",
+    id: 3,
+    title: "Donation Drop-off Day",
+    date: "2025-04-10",
+    startTime: "08:00",
+    endTime: "18:00",
     isAllDay: false,
-  },
-  {
-    id: 6,
-    title: "Community Outreach Event",
-    date: "2025-04-05",
-    isAllDay: true,
-  },
+  }
 ];
 
 // Calendar utils
