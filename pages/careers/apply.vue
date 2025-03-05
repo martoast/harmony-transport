@@ -127,16 +127,16 @@
           <label
             for="resume"
             class="block text-sm font-semibold leading-6 text-gray-900"
-            >Resume (PDF)</label
+            >Resume URL</label
           >
           <div class="mt-2.5">
             <input
-              type="file"
+              type="url"
               name="resume"
               id="resume"
-              accept=".pdf"
-              @change="handleFileUpload"
-              class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-red-50 file:text-red-700 hover:file:bg-red-100 hover:cursor-pointer"
+              placeholder="https://docs.google.com/document/d/your-resume/"
+              v-model="form.resume"
+              class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-red-500 sm:text-sm sm:leading-6"
               required
             />
           </div>
@@ -179,8 +179,8 @@
       <div class="mt-10">
         <button
           type="submit"
-          :disabled="loading"
-          class="block w-full rounded-md bg-red-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-red-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500"
+          :disabled="loading || !isFormValid"
+          class="block w-full rounded-md bg-red-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-red-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {{ loading ? "Submitting..." : "Submit Application" }}
         </button>
@@ -241,7 +241,7 @@ const form = ref({
   lastName: '',
   email: '',
   phone: '',
-  resume: null,
+  resume: '',
   coverLetter: '',
   agreeToPolicy: false,
   jobId: jobId
@@ -251,13 +251,17 @@ const loading = ref(false)
 const error = ref(null)
 const success = ref(false)
 
-// Handle file upload
-const handleFileUpload = (event) => {
-  const file = event.target.files[0]
-  if (file) {
-    form.value.resume = file
-  }
-}
+// Check if form is valid
+const isFormValid = computed(() => {
+  return form.value.firstName && 
+         form.value.lastName && 
+         form.value.email && 
+         form.value.phone && 
+         form.value.resume && 
+         form.value.coverLetter && 
+         form.value.agreeToPolicy &&
+         isValidUrl(form.value.resume)
+})
 
 // Submit application
 const submitApplication = async () => {
@@ -272,17 +276,9 @@ const submitApplication = async () => {
       throw new Error('Please fill out all required fields')
     }
     
-    // Create form data for submission
-    const formData = new FormData()
-    
-    // Convert resume to base64 for webhook
-    let resumeBase64 = null
-    if (form.value.resume) {
-      const reader = new FileReader()
-      resumeBase64 = await new Promise((resolve) => {
-        reader.onload = (e) => resolve(e.target.result)
-        reader.readAsDataURL(form.value.resume)
-      })
+    // Validate resume URL
+    if (!isValidUrl(form.value.resume)) {
+      throw new Error('Please enter a valid URL for your resume')
     }
     
     // Prepare payload for webhook
@@ -295,7 +291,7 @@ const submitApplication = async () => {
         coverLetter: form.value.coverLetter,
         jobId: jobId.value,
         jobTitle: job.value.role,
-        resumeBase64: resumeBase64 // Send resume as base64
+        resume: form.value.resume // Send resume as URL string
       }
     }
     
@@ -314,15 +310,11 @@ const submitApplication = async () => {
       lastName: '',
       email: '',
       phone: '',
-      resume: null,
+      resume: '',
       coverLetter: '',
       agreeToPolicy: false,
       jobId: jobId
     }
-    
-    // Reset file input
-    const fileInput = document.getElementById('resume')
-    if (fileInput) fileInput.value = ''
     
     success.value = true
     
@@ -339,6 +331,17 @@ const submitApplication = async () => {
     console.error('Error submitting application:', err)
   } finally {
     loading.value = false
+  }
+}
+
+// Helper function to validate URL
+const isValidUrl = (url) => {
+  if (!url) return false
+  try {
+    new URL(url)
+    return true
+  } catch (err) {
+    return false
   }
 }
 </script>
