@@ -5,9 +5,7 @@
         class="border-t border-gray-900/10 pt-12 xl:grid xl:grid-cols-3 xl:gap-8"
       >
         <div>
-          <a href="/">
-            <img class="h-12" src="/logo.jpg" alt="Apollo" />
-          </a>
+          <Logo/>
           <p class="mt-4 text-sm text-gray-600">
             Providing exceptional medical transportation services. Licensed and
             certified.

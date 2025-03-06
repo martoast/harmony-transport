@@ -3,10 +3,7 @@
       <nav class="flex items-center justify-between p-4 xl:px-8" aria-label="Global">
         <!-- Logo -->
         <div class="flex xl:flex-1">
-          <NuxtLink to="/" class="-m-1.5 p-1.5">
-            <span class="sr-only">Apollo</span>
-            <img src="/logo.jpg" class="h-12 w-auto" alt="Apollo" />
-          </NuxtLink>
+          <Logo/>
         </div>
         
         <!-- Mobile menu button -->
@@ -95,10 +92,7 @@
               : 'bg-white sm:ring-gray-900/10'"
           >
             <div class="flex items-center justify-between">
-              <NuxtLink to="/" class="-m-1.5 p-1.5" @click="mobileMenuOpen = false">
-                <span class="sr-only">Apollo</span>
-                <img class="h-8 w-auto" src="/logo.jpg" alt="Apollo" />
-              </NuxtLink>
+              <Logo/>
               <button 
                 @click="mobileMenuOpen = false" 
                 type="button" 
