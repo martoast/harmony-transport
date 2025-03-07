@@ -20,7 +20,7 @@
             <!-- Badge -->
             <div class="inline-flex items-center px-4 py-2 bg-red-500/20 backdrop-blur-sm rounded-full">
               <div class="h-2 w-2 rounded-full bg-red-500 animate-pulse"></div>
-              <span class="ml-2 text-sm font-medium text-white">24/7 Emergency Medical Transport</span>
+              <span class="ml-2 text-sm font-medium text-white">24/7 Emergent & Non Emergent Transport</span>
             </div>
 
             <!-- Heading -->
