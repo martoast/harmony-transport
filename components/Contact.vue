@@ -116,25 +116,7 @@
                 />
               </div>
             </div>
-            <div class="sm:col-span-2">
-              <label for="subject" class="block text-sm font-semibold text-gray-900">Subject</label>
-              <div class="mt-2.5">
-                <select 
-                  v-model="formData.subject" 
-                  id="subject" 
-                  name="subject" 
-                  class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-red-500 sm:text-sm sm:leading-6"
-                >
-                  <option value="">Select a subject</option>
-                  <option value="general">General Inquiry</option>
-                  <option value="service">Service Information</option>
-                  <option value="quote">Request a Quote</option>
-                  <option value="billing">Billing Question</option>
-                  <option value="feedback">Feedback</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-            </div>
+            
             <div class="sm:col-span-2">
               <label for="message" class="block text-sm font-semibold text-gray-900">Message</label>
               <div class="mt-2.5">
@@ -221,7 +203,6 @@ const formData = ref({
   lastName: '',
   email: '',
   phone: '',
-  subject: '',
   message: '',
   agreed: false
 })
@@ -237,8 +218,7 @@ const onSubmit = async () => {
     
     // Validate form
     if (!formData.value.firstName || !formData.value.lastName || 
-        !formData.value.email || !formData.value.phone || 
-        !formData.value.subject || !formData.value.message || 
+        !formData.value.email || !formData.value.phone || !formData.value.message || 
         !formData.value.agreed) {
       throw new Error('Please fill out all required fields')
     }
@@ -250,7 +230,6 @@ const onSubmit = async () => {
         lastName: formData.value.lastName,
         email: formData.value.email,
         phone: formData.value.phone,
-        subject: formData.value.subject,
         message: formData.value.message
       }
     }
@@ -270,7 +249,6 @@ const onSubmit = async () => {
       lastName: '',
       email: '',
       phone: '',
-      subject: '',
       message: '',
       agreed: false
     }
