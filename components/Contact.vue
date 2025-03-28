@@ -10,6 +10,26 @@
     </div>
     
     <div class="mx-auto mt-16 max-w-xl sm:mt-20">
+      <!-- Success Message -->
+      <div v-if="success" class="mb-8 rounded-md bg-green-50 p-4">
+        <div class="flex">
+          <div class="flex-shrink-0">
+            <CheckCircleIcon class="h-5 w-5 text-green-400" aria-hidden="true" />
+          </div>
+          <div class="ml-3">
+            <p class="text-sm font-medium text-green-400">Thank you for your message! We'll be in touch soon.</p>
+          </div>
+          <div class="ml-auto pl-3">
+            <div class="-mx-1.5 -my-1.5">
+              <button @click="success = false" type="button" class="inline-flex rounded-md bg-green-50 p-1.5 text-green-500 hover:bg-green-100 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2 focus:ring-offset-green-50">
+                <span class="sr-only">Dismiss</span>
+                <XMarkIcon class="h-5 w-5" aria-hidden="true" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
       <!-- Contact Information Cards -->
       <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 mb-12">
         <!-- Phone Card -->
@@ -149,27 +169,51 @@
               </div>
             </div>
           </div>
+          
+          <!-- Error message if any -->
+          <div v-if="error" class="rounded-md bg-red-50 p-4">
+            <div class="flex">
+              <div class="flex-shrink-0">
+                <ExclamationCircleIcon class="h-5 w-5 text-red-400" aria-hidden="true" />
+              </div>
+              <div class="ml-3">
+                <p class="text-sm font-medium text-red-800">{{ error }}</p>
+              </div>
+            </div>
+          </div>
+          
           <div>
             <button 
               type="submit" 
               class="block w-full rounded-md bg-red-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-red-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500 transition-all duration-300" 
-              :disabled="!formData.agreed"
-              :class="{'opacity-70 cursor-not-allowed': !formData.agreed, 'hover:shadow-lg transform hover:scale-[1.01]': formData.agreed}"
+              :disabled="!formData.agreed || loading"
+              :class="{'opacity-70 cursor-not-allowed': !formData.agreed || loading, 'hover:shadow-lg transform hover:scale-[1.01]': formData.agreed && !loading}"
             >
-              Send Message
+              <span v-if="!loading">Send Message</span>
+              <span v-else class="flex items-center justify-center">
+                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Sending...
+              </span>
             </button>
           </div>
         </form>
       </div>
     </div>
-
-    
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
-import { PhoneIcon, EnvelopeIcon } from '@heroicons/vue/24/outline'
+import { 
+  PhoneIcon, 
+  EnvelopeIcon, 
+  ExclamationCircleIcon, 
+  CheckCircleIcon, 
+  XMarkIcon 
+} from '@heroicons/vue/24/outline'
 import { Switch } from '@headlessui/vue'
 
 const formData = ref({
@@ -182,10 +226,69 @@ const formData = ref({
   agreed: false
 })
 
-const onSubmit = () => {
-  console.log('Form submitted with data:', formData.value)
-  // Here you would typically send the data to your backend
-  // For now, we're just logging it to the console
+const loading = ref(false)
+const error = ref(null)
+const success = ref(false)
+
+const onSubmit = async () => {
+  try {
+    loading.value = true
+    error.value = null
+    
+    // Validate form
+    if (!formData.value.firstName || !formData.value.lastName || 
+        !formData.value.email || !formData.value.phone || 
+        !formData.value.subject || !formData.value.message || 
+        !formData.value.agreed) {
+      throw new Error('Please fill out all required fields')
+    }
+    
+    // Prepare payload for webhook
+    const payload = {
+      lead: {
+        firstName: formData.value.firstName,
+        lastName: formData.value.lastName,
+        email: formData.value.email,
+        phone: formData.value.phone,
+        subject: formData.value.subject,
+        message: formData.value.message
+      }
+    }
+    
+    // Submit to webhook
+    await $fetch('/api/contact-webhook', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: payload
+    })
+    
+    // Reset form and show success message
+    formData.value = {
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      subject: '',
+      message: '',
+      agreed: false
+    }
+    
+    success.value = true
+    
+    // Scroll to top to show success message
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+    
+  } catch (err) {
+    error.value = err.message || 'An error occurred while sending your message. Please try again.'
+    console.error('Error sending message:', err)
+  } finally {
+    loading.value = false
+  }
 }
 </script>
 
