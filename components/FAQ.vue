@@ -35,7 +35,7 @@
     },
     {
       question: "How much do you charge for a transport?",
-      answer: "Each transport is unique and depends on multiple factors such as distance, type of service required, and time of day. We encourage you to call us at (830)590-1183 to get a personalized quote for your specific needs."
+      answer: "Each transport is unique and depends on multiple factors such as distance, type of service required, and time of day. We encourage you to call us at (210)935-6600 to get a personalized quote for your specific needs."
     },
     {
       question: "Can someone ride along during the transfer?",
