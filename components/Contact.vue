@@ -33,7 +33,7 @@
       <!-- Contact Information Cards -->
       <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 mb-12">
         <!-- Phone Card -->
-        <div class="rounded-xl bg-white p-6 shadow-sm ring-1 ring-gray-950/5 transition-all duration-300 hover:shadow-md">
+        <!-- <div class="rounded-xl bg-white p-6 shadow-sm ring-1 ring-gray-950/5 transition-all duration-300 hover:shadow-md">
           <div class="flex items-center">
             <div class="flex h-12 w-12 items-center justify-center rounded-full bg-red-50 text-red-500">
               <PhoneIcon class="h-6 w-6" aria-hidden="true" />
@@ -43,7 +43,7 @@
               <a href="tel:+1(210)935-6600" class="mt-2 block text-base font-medium text-red-500 hover:text-red-600">(210)935-6600</a>
             </div>
           </div>
-        </div>
+        </div> -->
         
         <!-- Email Card -->
         <div class="rounded-xl bg-white p-6 shadow-sm ring-1 ring-gray-950/5 transition-all duration-300 hover:shadow-md">
@@ -102,7 +102,7 @@
                 />
               </div>
             </div>
-            <div class="sm:col-span-2">
+            <!-- <div class="sm:col-span-2">
               <label for="phone-number" class="block text-sm font-semibold text-gray-900">Phone number</label>
               <div class="mt-2.5">
                 <input 
@@ -115,7 +115,7 @@
                   placeholder="(210)935-6600"
                 />
               </div>
-            </div>
+            </div> -->
             
             <div class="sm:col-span-2">
               <label for="message" class="block text-sm font-semibold text-gray-900">Message</label>

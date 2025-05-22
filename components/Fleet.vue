@@ -122,7 +122,7 @@
       <div class="mt-16 text-center">
         <p class="text-gray-600 mb-6">Need help choosing the right vehicle for your needs?</p>
         <div class="flex flex-col sm:flex-row justify-center gap-4">
-          <a 
+          <!-- <a 
             href="tel:+1(210)935-6600" 
             class="inline-flex items-center justify-center px-6 py-3 bg-white text-red-500 border border-red-500 font-medium rounded-lg hover:bg-red-50 transition-colors"
           >
@@ -140,7 +140,7 @@
               />
             </svg>
             Call now: (210)935-6600
-          </a>
+          </a> -->
           <NuxtLink 
             to="#request-transport" 
             class="inline-flex items-center justify-center px-6 py-3 bg-red-500 text-white font-medium rounded-lg hover:bg-red-600 transition-colors"

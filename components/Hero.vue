@@ -56,7 +56,7 @@
                     />
                   </svg>
                 </a>
-                <a
+                <!-- <a
                   href="tel:+1(210)935-6600"
                   class="inline-flex items-center justify-center px-6 py-4 md:px-8 md:py-4 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-lg backdrop-blur-sm transition-all duration-300 text-lg"
                 >
@@ -74,7 +74,7 @@
                     />
                   </svg>
                   Emergency Call
-                </a>
+                </a> -->
               </div>
 
               <!-- Trust Indicators - Show on all devices, but simplified -->

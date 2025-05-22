@@ -30,7 +30,7 @@
               />
             </svg>
           </a>
-          <a 
+          <!-- <a 
             href="tel:+1(210)935-6600" 
             class="rounded-lg bg-white border border-gray-300 px-6 py-3 text-sm font-semibold text-gray-700 shadow-sm hover:bg-gray-50 transition-colors duration-200 flex items-center justify-center"
           >
@@ -48,7 +48,7 @@
               />
             </svg>
             (210)935-6600
-          </a>
+          </a> -->
         </div>
         
         <!-- Social Media Links -->

@@ -51,14 +51,7 @@
         
         <!-- Desktop quick action buttons -->
         <div class="hidden xl:flex xl:flex-1 xl:justify-end xl:gap-x-4">
-          <NuxtLink 
-            to="tel:+1(210)935-6600" 
-            class="flex items-center transition-colors"
-            :class="isHomePage ? 'text-white hover:text-red-400' : 'text-gray-700 hover:text-red-600'"
-          >
-            <PhoneIcon class="w-5 h-5 mr-1" aria-hidden="true" />
-            <span class="text-sm">(210)935-6600</span>
-          </NuxtLink>
+          
           
           <NuxtLink 
             to="#request-transport" 
@@ -131,26 +124,14 @@
                 
                 <!-- Quick action items -->
                 <div class="py-6 space-y-3">
-                  <NuxtLink 
-                    to="tel:+1(210)935-6600" 
-                    class="-mx-3 flex items-center rounded-lg px-3 py-3 text-base font-semibold transition-colors"
-                    :class="isHomePage 
-                      ? 'text-white hover:bg-white/10 active:bg-white/20' 
-                      : 'text-gray-900 hover:bg-gray-50 active:bg-gray-100'"
-                  >
-                    <PhoneIcon class="w-5 h-5 mr-3" aria-hidden="true" />
-                    Call Us: (210)935-6600
-                  </NuxtLink>
-                  <NuxtLink 
-                    to="sms:+1(210)935-6600" 
-                    class="-mx-3 flex items-center rounded-lg px-3 py-3 text-base font-semibold transition-colors"
-                    :class="isHomePage 
-                      ? 'text-white hover:bg-white/10 active:bg-white/20' 
-                      : 'text-gray-900 hover:bg-gray-50 active:bg-gray-100'"
-                  >
-                    <ChatBubbleLeftIcon class="w-5 h-5 mr-3" aria-hidden="true" />
-                    Text Us
-                  </NuxtLink>
+                  // <NuxtLink to="tel:+1(210)935-6600" class="-mx-3 flex items-center rounded-lg px-3 py-3 text-base font-semibold transition-colors" :class="isHomePage ? 'text-white hover:bg-white/10 active:bg-white/20' : 'text-gray-900 hover:bg-gray-50 active:bg-gray-100'">
+                  //   <PhoneIcon class="w-5 h-5 mr-3" aria-hidden="true" />
+                  //   Call Us: (210)935-6600
+                  // </NuxtLink>
+                  // <NuxtLink to="sms:+1(210)935-6600" class="-mx-3 flex items-center rounded-lg px-3 py-3 text-base font-semibold transition-colors" :class="isHomePage ? 'text-white hover:bg-white/10 active:bg-white/20' : 'text-gray-900 hover:bg-gray-50 active:bg-gray-100'">
+                  //   <ChatBubbleLeftIcon class="w-5 h-5 mr-3" aria-hidden="true" />
+                  //   Text Us
+                  // </NuxtLink>
                   <NuxtLink 
                     to="#request-transport" 
                     class="-mx-3 flex items-center justify-center rounded-lg px-3 py-3.5 text-base font-semibold text-white bg-red-500 hover:bg-red-600 active:bg-red-700 transition-colors shadow-lg"
